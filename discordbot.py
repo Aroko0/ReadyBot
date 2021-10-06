@@ -13,7 +13,7 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.MissingPermissions):
-        embed = discord.Embed(title=":x: 失敗 -MissingPermissions", description=f"実行者の必要な権限が無いため実行出来ません。", timestamp=ctx.created_at, color=discord.Colour.red())
+        embed = discord.Embed(title=":x: 失敗 -MissingPermissions", description="実行者の必要な権限が無いため実行出来ません。", timestamp=ctx.message.created_at, color=discord.Colour.red())
         embed.set_footer(text="お困りの場合は、@aroko1#6837をメンションしてください。")
         await ctx.send(embed=embed)
     elif isinstance(error, discord.ext.commands.errors.BotMissingPermissions):
