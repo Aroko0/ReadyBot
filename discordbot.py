@@ -59,20 +59,20 @@ async def help(ctx):
 @bot.command()
 async def idprofile(ctx, id=None):
     rc = discord.Colour.dark_blue()
-    if id == None:
+    if id is None:
       await ctx.send("idを入力してください")
       return
     embed = discord.Embed(title=f":ballot_box_with_check: 処理中", description=f"読み込み中です", color=rc)
     message = await ctx.send(embed=embed)
     member = await bot.fetch_user(id)
     botcheak = member.bot
-    if botcheak == True:
+    if botcheak is True:
      cheak = "はい"
-    if botcheak == False:
+    if botcheak is False:
      cheak = "いいえ"
-    if member.system == True:
+    if member.system is True:
      cheakk = "はい"
-    if member.system == False:
+    if member.system is False:
      cheakk = "いいえ"
     e = discord.Embed(title=f"{member.name}の情報", description=f"{member.name}の詳細を表示します", color=rc)
     e.add_field(name=f"名前", value=member.name + "#" + member.discriminator, inline=False)
