@@ -7,7 +7,7 @@ bot = commands.Bot(command_prefix="rb!", intents=discord.Intents.all(), help_com
 @bot.event
 async def on_ready():
     print("オンライン")
-    game = discord.Game("rb! | 作成者: aroko1#6837 | v0.1.0")
+    game = discord.Game(f"rb! | {len(bot.guilds)}サーバー | {len(bot.users)}ユーザー | 作成者: aroko1#6837")
     await bot.change_presence(activity=game, status=discord.Status.do_not_disturb)
 
 @bot.event
