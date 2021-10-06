@@ -2,5 +2,5 @@
 
 このファイルは、DiscordBotPortalJP/discordpy-startupのtemplateを一部変更しただけです。
 
-## サポートサーバー
+### サポートサーバー
 https://discord.gg/YDyzK8sqhf
