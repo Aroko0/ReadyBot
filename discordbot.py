@@ -3,7 +3,21 @@ from os import getenv
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix="rb!", intents=discord.Intents.all(), help_command=None)
+RESPONSES = {
+    "おはよう": "おはよう！",
+    "おやすみ": "おやすみ！",
+    "疲れた": "おつかれ！"
+}
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
 
+    for rk, rv in RESPONSES.items():
+        if rk in message.content:
+            await message.reply(rv)
+    
+    await bot.process_commands(message)
 @bot.event
 async def on_ready():
     print("オンライン")
