@@ -58,7 +58,7 @@ async def help(ctx):
 
 @bot.command()
 async def idprofile(ctx, id=None):
-    rc = discord.Colour.green()
+    rc = discord.Colour.dark_blue()
     if id == None:
       await ctx.send("idを入力してください")
       return
@@ -89,7 +89,7 @@ async def serverinfo(ctx):
     guild = ctx.message.guild
     roles =[role for role in guild.roles]
     text_channels = [text_channels for text_channels in guild.text_channels]
-    embed = discord.Embed(title=f"Serverinfo - {guild.name}", timestamp=ctx.message.created_at, color=discord.Colour.purple(), inline=False)
+    embed = discord.Embed(title=f"Serverinfo - {guild.name}", timestamp=ctx.message.created_at, color=discord.Colour.dark_blue(), inline=False)
     embed.set_thumbnail(url=ctx.guild.icon_url)
     embed.add_field(name="地域", value=f"{ctx.guild.region}", inline=False)
     embed.add_field(name="チャンネル数", value=f"{len(text_channels)}", inline=False)
@@ -110,7 +110,8 @@ async def ban(ctx, member: discord.Member, *, reason=None):
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
     await member.kick(reason=reason)
-    await ctx.send(f"ユーザー {member}がサーバーからkickされました。")
+    embed = discord.Embed(title="Kick", descriprtion=f"{member}がkickされました。", color=discord.Colour.dark_blue())
+    await ctx.send(embed=embed)
 
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
