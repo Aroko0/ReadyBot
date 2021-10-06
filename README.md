@@ -1,7 +1,6 @@
 # ReadyBot
 
-ReadyBotは、serverinfo機能や
-ほかのbotにある機能もあります。
+ReadyBotは、serverinfo機能や、他のbotにある機能もあります。
 
 ### サポートサーバー
 https://discord.gg/YDyzK8sqhf
