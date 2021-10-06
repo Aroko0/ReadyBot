@@ -55,12 +55,14 @@ async def help(ctx):
     embed.add_field(name="ここに移行しました", value="https://readybotcommands.web.fc2.com/", inline=False)
     embed.set_footer(text=f" 実行者: {ctx.author} ", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
+    
 @bot.command()
 async def report(ctx, value):
     channel = guild.get_channel(895268495745507348)
     await channel.send(f"{value} - {ctx.author.name}|{ctx.author.id}")
     await ctx.add_reaction('✅')
     await ctx.send("送信しました。")
+    
 @bot.command()
 async def idprofile(ctx, id=None):
     rc = discord.Colour.dark_blue()
