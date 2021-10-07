@@ -1,7 +1,8 @@
 import discord
 from os import getenv
 from discord.ext import commands
-
+from discord.ext import tasks
+from datetime import datetime 
 bot = commands.Bot(command_prefix="rb!", intents=discord.Intents.all(), help_command=None)
 RESPONSES = {
     "おはよう": "おはよう！",
@@ -133,6 +134,15 @@ async def kick(ctx, member: discord.Member, *, reason=None):
     await member.kick(reason=reason)
     embed = discord.Embed(title="Kick", descriprtion=f"{member}がkickされました。", color=discord.Colour.dark_blue())
     await ctx.send(embed=embed)
+@tasks.loop(seconds=60)
+async def loop():
+    
+    now = datetime.now().strftime('%H:%M')
+    if now == '7:00':
+        channel = client.get_channel(CHANNEL_ID)
+        await channel.send('https://cdn.discordapp.com/attachments/893766986016915458/895616423043407902/image0.gif')  
 
+
+loop.start()
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
