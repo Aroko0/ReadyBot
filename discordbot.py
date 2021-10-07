@@ -139,7 +139,7 @@ async def loop():
     
     now = datetime.now().strftime('%H:%M')
     if now == '7:00':
-        channel = client.get_channel(CHANNEL_ID)
+        channel = bot.get_channel(895250368194301962)
         await channel.send('https://cdn.discordapp.com/attachments/893766986016915458/895616423043407902/image0.gif')  
 
 
