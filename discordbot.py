@@ -72,7 +72,7 @@ async def help(ctx):
     
 @bot.command()
 async def report(ctx, *, value):
-    channel = guild.get_channel(895268495745507348)
+    channel = bot.get_channel(895268495745507348)
     await channel.send(f"{str(value)} - {ctx.author.name}|{ctx.author.id}")
     await ctx.add_reaction('✅')
     await ctx.send("送信しました。")
