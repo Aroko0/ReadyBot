@@ -70,24 +70,7 @@ async def help(ctx):
     embed.set_footer(text=f" 実行者: {ctx.author} ", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
-@bot.command()
-async def calc(ctx, a, b, c):
-  if b is "+":
-    calc = a + c
-    await ctx.send(f"{a}+{c}={calc}")
-  elif b is "-":
-      calc = a - c
-      await ctx.send(f"{a}-{c}={calc}")
-  elif b is "÷" or "/":
-      calc = a / c
-      await ctx.send(f"{a}÷{c}={calc}")
-  elif b is "×" or "*":
-      calc = a / c
-      await ctx.send(f"{a}×{c}={calc}")
-  else:
-    embed = discord.Embed(title=":x: 失敗 - CalcError", description=f"コマンドの実行中にエラーが発生しました。", timestamp=ctx.message.created_at, color=discord.Colour.red())
-    embed.set_footer(text="お困りの場合は、@aroko1#6837をメンションしてください。")
-    await ctx.send(embed=embed)
+
 
 @bot.command()
 async def report(ctx, *, value):
