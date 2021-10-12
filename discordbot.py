@@ -1,6 +1,7 @@
 import discord
 from os import getenv
 from discord.ext import commands
+from discord_slash import SlashCommand
 
 bot = commands.Bot(command_prefix="rb!", intents=discord.Intents.all(), help_command=None)
 RESPONSES = {
@@ -8,7 +9,11 @@ RESPONSES = {
     "おやすみ": "おやすみ！",
     "疲れた": "おつかれ！"
 }
-global_channel_name = "ready-gchat"
+slash_client = SlashCommand(bot)
+
+@slash_client.slash(name="hello", description="挨拶をします")
+async def _slash_hello(ctx):
+    await ctx.send("こんにちは！")
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -24,7 +29,6 @@ async def on_ready():
     print("オンライン")
     game = discord.Game(f"rb! | {len(bot.guilds)}サーバー | {len(bot.users)}ユーザー | 作成者: aroko1#6837")
     await bot.change_presence(activity=game, status=discord.Status.do_not_disturb)
-
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.MissingPermissions):
