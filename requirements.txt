@@ -1,2 +1,2 @@
 discord-py-slash-command
-git+git://github.com/Rapptz/discord.py@45d498c#egg=discord.py
+discord.py
