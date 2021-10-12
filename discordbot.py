@@ -8,6 +8,7 @@ RESPONSES = {
     "おやすみ": "おやすみ！",
     "疲れた": "おつかれ！"
 }
+global_channel_name = "ready-gchat"
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
