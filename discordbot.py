@@ -12,7 +12,7 @@ RESPONSES = {
 slash_client = SlashCommand(bot)
 
 @slash_client.slash(name="hello", description="挨拶をします")
-async def _slash_hello(ctx):
+async def _hello(ctx):
     await ctx.send("こんにちは！")
 @bot.event
 async def on_message(message):
