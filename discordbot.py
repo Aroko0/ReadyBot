@@ -14,8 +14,14 @@ slash_client = SlashCommand(bot)
 @slash_client.slash(name="hello", description="挨拶をします")
 async def _hello(ctx):
     await ctx.send("こんにちは！")
-@bot.listen()
+@bot.event
 async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    for rk, rv in RESPONSES.items():
+        if rk in message.content:
+            await message.reply(rv)
     if message.channel.name is global_channel_name:
         if message.author.bot:
             return
@@ -45,17 +51,9 @@ async def on_message(message):
                     embed.add_field(name='返信しました', value=reference_value, inline=True) 
                 await channel.send(embed=embed)
                 await message.add_reaction('✅')
-
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
-    for rk, rv in RESPONSES.items():
-        if rk in message.content:
-            await message.reply(rv)
+                await bot.process_commands(message)
     
-    await bot.process_commands(message)
+    
 @bot.event
 async def on_ready():
     print("オンライン")
