@@ -21,7 +21,7 @@ async def on_message(message):
     for rk, rv in RESPONSES.items():
         if rk in message.content:
             await message.reply(rv)
-                await bot.process_commands(message)
+            await bot.process_commands(message)
 
 @bot.event
 async def on_ready():
