@@ -22,38 +22,37 @@ async def on_message(message):
     for rk, rv in RESPONSES.items():
         if rk in message.content:
             await message.reply(rv)
-    if message.channel.name is global_channel_name:
+    if message.channel.name == global_channel_name:
         if message.author.bot:
             return
-        for channel in bot.get_all_channels(): 
-            if channel.name is global_channel_name: 
-                if channel is message.channel: 
-                    continue
+    for channel in bot.get_all_channels():
+        if channel.name == global_channel_name:
+            if channel == message.channel:
+                continue
 
-                embed=discord.Embed(description=message.content, color=discord.Colour.dark_blue()) 
-                embed.set_author(name="{}#{}".format(message.author.name, message.author.discriminator),icon_url="https://media.discordapp.net/avatars/{}/{}.png?size=1024".format(message.author.id, message.author.avatar))
-                embed.set_footer(text="{} / メッセージid {}".format(message.guild.name, message.id),icon_url="https://media.discordapp.net/icons/{}/{}.png?size=1024".format(message.guild.id, message.guild.icon))
-                if message.attachments != []: 
-                    embed.set_image(url=message.attachments[0].url)
+            embed=discord.Embed(description=message.content, color=0x9B95C9)
+            embed.set_author(name="{}#{}".format(message.author.name, message.author.discriminator),icon_url="https://media.discordapp.net/avatars/{}/{}.png?size=1024".format(message.author.id, message.author.avatar))
+            embed.set_footer(text="{} / mID:{}".format(message.guild.name, message.id),icon_url="https://media.discordapp.net/icons/{}/{}.png?size=1024".format(message.guild.id, message.guild.icon))
+            if message.attachments != []:
+                embed.set_image(url=message.attachments[0].url)
 
-                if message.reference:
-                    reference_msg = await message.channel.fetch_message(message.reference.message_id) 
-                    if reference_msg.embeds and reference_msg.author == bot.user: 
-                        reference_message_content = reference_msg.embeds[0].description 
-                        reference_message_author = reference_msg.embeds[0].author.name 
-                    elif reference_msg.author != bot.user:
-                        reference_message_content = reference_msg.content 
-                        reference_message_author = reference_msg.author.name+'#'+reference_msg.author.discriminator
-                    reference_content = ""
-                    for string in reference_message_content.splitlines(): 
-                        reference_content += "> " + string + "\n"
-                    reference_value = "**@{}**\n{}".format(reference_message_author, reference_content) 
-                    embed.add_field(name='返信しました', value=reference_value, inline=True) 
+            if message.reference:
+                reference_msg = await message.channel.fetch_message(message.reference.message_id)
+                if reference_msg.embeds and reference_msg.author == bot.user:
+                    reference_message_content = reference_msg.embeds[0].description
+                    reference_message_author = reference_msg.embeds[0].author.name
+                elif reference_message_author != bot.user:
+                    reference_message_content = reference_msg.content
+                    reference_message_author = reference_msg.author.name+'#'+reference_msg.author.discriminator
+                reference_content = ""
+                for string in reference_message_content.splitlines():
+                    reference_content += "> " + string + "\n"
+                reference_value = "**@{}**\n{}".format(reference_message_author, reference_content)
+                embed.add_field(name='返信しました', value=reference_value, inline=True)
                 await channel.send(embed=embed)
                 await message.add_reaction('✅')
                 await bot.process_commands(message)
-    
-    
+
 @bot.event
 async def on_ready():
     print("オンライン")
