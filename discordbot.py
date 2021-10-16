@@ -18,6 +18,7 @@ async def _hello(ctx):
 async def on_message(message):
     if message.author == bot.user:
         return
+        
     for rk, rv in RESPONSES.items():
         if rk in message.content:
             await message.reply(rv)
