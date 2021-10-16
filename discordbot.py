@@ -105,12 +105,7 @@ async def help(ctx):
     embed.set_footer(text=f" 実行者: {ctx.author} ", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
-@bot.command()
-async def say(ctx, content):
-    if ctx.channel.id is 897946266431000586:
-        await ctx.send(content)
-    else:
-        await ctx.send("このチャンネルでは実行できません")
+
         
 
 @bot.command()
