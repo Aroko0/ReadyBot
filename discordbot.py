@@ -18,7 +18,7 @@ async def _hello(ctx):
 async def on_message(message):
     if message.author == bot.user:
         return
-        
+
     for rk, rv in RESPONSES.items():
         if rk in message.content:
             await message.reply(rv)
@@ -74,9 +74,6 @@ async def help(ctx):
     embed.add_field(name="ここに移行しました", value="https://readybotcommands.web.fc2.com/", inline=False)
     embed.set_footer(text=f" 実行者: {ctx.author} ", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
-
-
-        
 
 @bot.command()
 async def report(ctx, *, value):
