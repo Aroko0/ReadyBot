@@ -24,7 +24,14 @@ async def on_message(message):
             await message.reply(rv)
     
     await bot.process_commands(message)
-
+@bot.event
+async def on_guild_join(guild):
+    game = discord.Game(f"rb! | {len(bot.guilds)}サーバー | {len(bot.users)}ユーザー | 作成者: aroko1#6837")
+    await bot.change_presence(activity=game, status=discord.Status.do_not_disturb)
+@bot.event
+async def on_guild_leave(guild):
+    game = discord.Game(f"rb! | {len(bot.guilds)}サーバー | {len(bot.users)}ユーザー | 作成者: aroko1#6837")
+    await bot.change_presence(activity=game, status=discord.Status.do_not_disturb)
 @bot.event
 async def on_ready():
     print("オンライン")
