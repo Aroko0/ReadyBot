@@ -72,6 +72,14 @@ async def on_command_error(ctx, error):
         raise error
 
 @bot.command()
+async def guild_leave(ctx, id: discord.Guild):
+    admin = 873162433965981728
+    if ctx.author.id is admin:
+        await bot.leave_guild(id)
+        await ctx.send("サーバー退室完了")
+    else:
+        await ctx.send("あなたは実行できません")
+@bot.command()
 async def hello(ctx):
     await ctx.send("こんにちは！")
 
