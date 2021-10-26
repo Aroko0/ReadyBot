@@ -93,11 +93,10 @@ async def hello(ctx):
 
 @bot.command()
 async def help(ctx):
-    guild = ctx.message.guild
     embed = discord.Embed(title=f"コマンド一覧 - {guild.name}", timestamp=ctx.message.created_at, color=discord.Colour.dark_blue(), inline=False)
     embed.set_thumbnail(url=ctx.guild.icon_url)
-    embed.add_field(name="ここに移行しました", value="https://readybotcommands.web.fc2.com/", inline=False)
-    embed.set_footer(text=f" 実行者: {ctx.author} ", icon_url=ctx.author.avatar_url)
+    embed.add_field(name="webサイト", value="https://readybotcommands.web.fc2.com/", inline=False)
+    embed.set_footer(text=f" 実行者: {ctx.author.name} ", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
 @bot.command()
