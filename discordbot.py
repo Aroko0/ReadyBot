@@ -80,6 +80,14 @@ async def guild_leave(ctx, id: discord.Guild):
     else:
         await ctx.send("あなたは実行できません")
 @bot.command()
+async def eval(ctx, *, script):
+    admin = 873162433965981728
+    if ctx.author.id is admin:
+        await ctx.send(eval(script.replace("```py", "").replace("```", "")))
+    else:
+        await ctx.send("あなたは実行できません")
+
+@bot.command()
 async def hello(ctx):
     await ctx.send("こんにちは！")
 
