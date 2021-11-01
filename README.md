@@ -1,5 +1,10 @@
 # 利用条件
-[Discord サービス利用規約に同意](terms.md)
+Discord サービス利用規約に同意  
+<iframe id="inline-frame"
+  width="600px"
+  height="600px"
+  src="https://discord.com/terms">
+</iframe>
 # ReadyBot
 
 ReadyBotは、機能や、他のbotにある機能もあります。
