@@ -1,3 +1,5 @@
+# 利用条件
+[Discord サービス利用規約に同意](terms.md)
 # ReadyBot
 
 ReadyBotは、機能や、他のbotにある機能もあります。
